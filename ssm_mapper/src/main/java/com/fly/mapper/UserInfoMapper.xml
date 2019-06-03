@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fly.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.fly.pojo.UserInfo" >
+    <id column="Fuser_id" property="userId" jdbcType="CHAR" />
+    <result column="Faccount" property="account" jdbcType="CHAR" />
+    <result column="Fopen_id" property="openId" jdbcType="CHAR" />
+    <result column="Fopen_key" property="openKey" jdbcType="CHAR" />
+    <result column="Fwx_open_id" property="wxOpenId" jdbcType="CHAR" />
+    <result column="Fqq_open_id" property="qqOpenId" jdbcType="CHAR" />
+    <result column="Fbind_wx" property="bindWx" jdbcType="CHAR" />
+    <result column="Fbind_qq" property="bindQq" jdbcType="CHAR" />
+    <result column="Fwx_open_key" property="wxOpenKey" jdbcType="CHAR" />
+    <result column="Fgender" property="gender" jdbcType="CHAR" />
+    <result column="Fsign" property="sign" jdbcType="VARCHAR" />
+    <result column="Fnick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="Fface_url" property="faceUrl" jdbcType="VARCHAR" />
+    <result column="Fmedia_id" property="mediaId" jdbcType="CHAR" />
+    <result column="Freal_name" property="realName" jdbcType="VARCHAR" />
+    <result column="Femail" property="email" jdbcType="VARCHAR" />
+    <result column="Femail_comfirm_tag" property="emailComfirmTag" jdbcType="SMALLINT" />
+    <result column="Fqqnumber" property="qqnumber" jdbcType="VARCHAR" />
+    <result column="Fqq_comfirm_tag" property="qqComfirmTag" jdbcType="SMALLINT" />
+    <result column="Ftelephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="Ftelephone_comfirm_tag" property="telephoneComfirmTag" jdbcType="SMALLINT" />
+    <result column="Fphone" property="phone" jdbcType="VARCHAR" />
+    <result column="Fcompany" property="company" jdbcType="VARCHAR" />
+    <result column="Fdepartment" property="department" jdbcType="VARCHAR" />
+    <result column="Fposition" property="position" jdbcType="VARCHAR" />
+    <result column="Fcard_url" property="cardUrl" jdbcType="VARCHAR" />
+    <result column="Fiscomfirmed" property="iscomfirmed" jdbcType="SMALLINT" />
+    <result column="Fcreate_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="Fmod_time" property="modTime" jdbcType="TIMESTAMP" />
+    <result column="Fcheckin_time" property="checkinTime" jdbcType="TIMESTAMP" />
+    <result column="FsuffixUin" property="suffixuin" jdbcType="CHAR" />
+    <result column="Fstandby1" property="standby1" jdbcType="VARCHAR" />
+    <result column="Fstandby2" property="standby2" jdbcType="VARCHAR" />
+    <result column="Fstandby3" property="standby3" jdbcType="VARCHAR" />
+    <result column="Fstandby4" property="standby4" jdbcType="VARCHAR" />
+    <result column="Fstandby5" property="standby5" jdbcType="VARCHAR" />
+    <result column="Faudit_state" property="auditState" jdbcType="INTEGER" />
+    <result column="Fsubmit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="Fsubmit_state" property="submitState" jdbcType="INTEGER" />
+    <result column="Fmanage_state" property="manageState" jdbcType="SMALLINT" />
+    <result column="Ffirst_comfirm_time" property="firstComfirmTime" jdbcType="TIMESTAMP" />
+    <result column="Flast_comfirm_time" property="lastComfirmTime" jdbcType="TIMESTAMP" />
+    <result column="Fcompany_branch" property="companyBranch" jdbcType="VARCHAR" />
+    <result column="Fconfirmed_count" property="confirmedCount" jdbcType="INTEGER" />
+    <result column="Forigin" property="origin" jdbcType="CHAR" />
+    <result column="Fis_red" property="isRed" jdbcType="INTEGER" />
+    <result column="Fis_mobile_reg" property="isMobileReg" jdbcType="SMALLINT" />
+    <result column="Fface_notice" property="faceNotice" jdbcType="SMALLINT" />
+    <result column="Fca_comfirm_tag" property="caComfirmTag" jdbcType="SMALLINT" />
+    <result column="Fdepartment_id" property="departmentId" jdbcType="CHAR" />
+    <result column="Fis_hide" property="isHide" jdbcType="SMALLINT" />
+    <result column="Fexternal_name" property="externalName" jdbcType="VARCHAR" />
+    <result column="Fidentity_no" property="identityNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fuser_id, Faccount, Fopen_id, Fopen_key, Fwx_open_id, Fqq_open_id, Fbind_wx, Fbind_qq, 
+    Fwx_open_key, Fgender, Fsign, Fnick_name, Fface_url, Fmedia_id, Freal_name, Femail, 
+    Femail_comfirm_tag, Fqqnumber, Fqq_comfirm_tag, Ftelephone, Ftelephone_comfirm_tag, 
+    Fphone, Fcompany, Fdepartment, Fposition, Fcard_url, Fiscomfirmed, Fcreate_time, 
+    Fmod_time, Fcheckin_time, FsuffixUin, Fstandby1, Fstandby2, Fstandby3, Fstandby4, 
+    Fstandby5, Faudit_state, Fsubmit_time, Fsubmit_state, Fmanage_state, Ffirst_comfirm_time, 
+    Flast_comfirm_time, Fcompany_branch, Fconfirmed_count, Forigin, Fis_red, Fis_mobile_reg, 
+    Fface_notice, Fca_comfirm_tag, Fdepartment_id, Fis_hide, Fexternal_name, Fidentity_no
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fly.pojo.UserInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_info
+    where Fuser_id = #{userId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user_info
+    where Fuser_id = #{userId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fly.pojo.UserInfoExample" >
+    delete from t_user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fly.pojo.UserInfo" >
+    insert into t_user_info (Fuser_id, Faccount, Fopen_id, 
+      Fopen_key, Fwx_open_id, Fqq_open_id, 
+      Fbind_wx, Fbind_qq, Fwx_open_key, Fgender, 
+      Fsign, Fnick_name, Fface_url, 
+      Fmedia_id, Freal_name, Femail, 
+      Femail_comfirm_tag, Fqqnumber, Fqq_comfirm_tag, 
+      Ftelephone, Ftelephone_comfirm_tag, Fphone, 
+      Fcompany, Fdepartment, Fposition, 
+      Fcard_url, Fiscomfirmed, Fcreate_time, 
+      Fmod_time, Fcheckin_time, FsuffixUin, 
+      Fstandby1, Fstandby2, Fstandby3, 
+      Fstandby4, Fstandby5, Faudit_state, 
+      Fsubmit_time, Fsubmit_state, Fmanage_state, 
+      Ffirst_comfirm_time, Flast_comfirm_time, 
+      Fcompany_branch, Fconfirmed_count, Forigin, 
+      Fis_red, Fis_mobile_reg, Fface_notice, 
+      Fca_comfirm_tag, Fdepartment_id, Fis_hide, 
+      Fexternal_name, Fidentity_no)
+    values (#{userId,jdbcType=CHAR}, #{account,jdbcType=CHAR}, #{openId,jdbcType=CHAR}, 
+      #{openKey,jdbcType=CHAR}, #{wxOpenId,jdbcType=CHAR}, #{qqOpenId,jdbcType=CHAR}, 
+      #{bindWx,jdbcType=CHAR}, #{bindQq,jdbcType=CHAR}, #{wxOpenKey,jdbcType=CHAR}, #{gender,jdbcType=CHAR}, 
+      #{sign,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{faceUrl,jdbcType=VARCHAR}, 
+      #{mediaId,jdbcType=CHAR}, #{realName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{emailComfirmTag,jdbcType=SMALLINT}, #{qqnumber,jdbcType=VARCHAR}, #{qqComfirmTag,jdbcType=SMALLINT}, 
+      #{telephone,jdbcType=VARCHAR}, #{telephoneComfirmTag,jdbcType=SMALLINT}, #{phone,jdbcType=VARCHAR}, 
+      #{company,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{cardUrl,jdbcType=VARCHAR}, #{iscomfirmed,jdbcType=SMALLINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modTime,jdbcType=TIMESTAMP}, #{checkinTime,jdbcType=TIMESTAMP}, #{suffixuin,jdbcType=CHAR}, 
+      #{standby1,jdbcType=VARCHAR}, #{standby2,jdbcType=VARCHAR}, #{standby3,jdbcType=VARCHAR}, 
+      #{standby4,jdbcType=VARCHAR}, #{standby5,jdbcType=VARCHAR}, #{auditState,jdbcType=INTEGER}, 
+      #{submitTime,jdbcType=TIMESTAMP}, #{submitState,jdbcType=INTEGER}, #{manageState,jdbcType=SMALLINT}, 
+      #{firstComfirmTime,jdbcType=TIMESTAMP}, #{lastComfirmTime,jdbcType=TIMESTAMP}, 
+      #{companyBranch,jdbcType=VARCHAR}, #{confirmedCount,jdbcType=INTEGER}, #{origin,jdbcType=CHAR}, 
+      #{isRed,jdbcType=INTEGER}, #{isMobileReg,jdbcType=SMALLINT}, #{faceNotice,jdbcType=SMALLINT}, 
+      #{caComfirmTag,jdbcType=SMALLINT}, #{departmentId,jdbcType=CHAR}, #{isHide,jdbcType=SMALLINT}, 
+      #{externalName,jdbcType=VARCHAR}, #{identityNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fly.pojo.UserInfo" >
+    insert into t_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        Fuser_id,
+      </if>
+      <if test="account != null" >
+        Faccount,
+      </if>
+      <if test="openId != null" >
+        Fopen_id,
+      </if>
+      <if test="openKey != null" >
+        Fopen_key,
+      </if>
+      <if test="wxOpenId != null" >
+        Fwx_open_id,
+      </if>
+      <if test="qqOpenId != null" >
+        Fqq_open_id,
+      </if>
+      <if test="bindWx != null" >
+        Fbind_wx,
+      </if>
+      <if test="bindQq != null" >
+        Fbind_qq,
+      </if>
+      <if test="wxOpenKey != null" >
+        Fwx_open_key,
+      </if>
+      <if test="gender != null" >
+        Fgender,
+      </if>
+      <if test="sign != null" >
+        Fsign,
+      </if>
+      <if test="nickName != null" >
+        Fnick_name,
+      </if>
+      <if test="faceUrl != null" >
+        Fface_url,
+      </if>
+      <if test="mediaId != null" >
+        Fmedia_id,
+      </if>
+      <if test="realName != null" >
+        Freal_name,
+      </if>
+      <if test="email != null" >
+        Femail,
+      </if>
+      <if test="emailComfirmTag != null" >
+        Femail_comfirm_tag,
+      </if>
+      <if test="qqnumber != null" >
+        Fqqnumber,
+      </if>
+      <if test="qqComfirmTag != null" >
+        Fqq_comfirm_tag,
+      </if>
+      <if test="telephone != null" >
+        Ftelephone,
+      </if>
+      <if test="telephoneComfirmTag != null" >
+        Ftelephone_comfirm_tag,
+      </if>
+      <if test="phone != null" >
+        Fphone,
+      </if>
+      <if test="company != null" >
+        Fcompany,
+      </if>
+      <if test="department != null" >
+        Fdepartment,
+      </if>
+      <if test="position != null" >
+        Fposition,
+      </if>
+      <if test="cardUrl != null" >
+        Fcard_url,
+      </if>
+      <if test="iscomfirmed != null" >
+        Fiscomfirmed,
+      </if>
+      <if test="createTime != null" >
+        Fcreate_time,
+      </if>
+      <if test="modTime != null" >
+        Fmod_time,
+      </if>
+      <if test="checkinTime != null" >
+        Fcheckin_time,
+      </if>
+      <if test="suffixuin != null" >
+        FsuffixUin,
+      </if>
+      <if test="standby1 != null" >
+        Fstandby1,
+      </if>
+      <if test="standby2 != null" >
+        Fstandby2,
+      </if>
+      <if test="standby3 != null" >
+        Fstandby3,
+      </if>
+      <if test="standby4 != null" >
+        Fstandby4,
+      </if>
+      <if test="standby5 != null" >
+        Fstandby5,
+      </if>
+      <if test="auditState != null" >
+        Faudit_state,
+      </if>
+      <if test="submitTime != null" >
+        Fsubmit_time,
+      </if>
+      <if test="submitState != null" >
+        Fsubmit_state,
+      </if>
+      <if test="manageState != null" >
+        Fmanage_state,
+      </if>
+      <if test="firstComfirmTime != null" >
+        Ffirst_comfirm_time,
+      </if>
+      <if test="lastComfirmTime != null" >
+        Flast_comfirm_time,
+      </if>
+      <if test="companyBranch != null" >
+        Fcompany_branch,
+      </if>
+      <if test="confirmedCount != null" >
+        Fconfirmed_count,
+      </if>
+      <if test="origin != null" >
+        Forigin,
+      </if>
+      <if test="isRed != null" >
+        Fis_red,
+      </if>
+      <if test="isMobileReg != null" >
+        Fis_mobile_reg,
+      </if>
+      <if test="faceNotice != null" >
+        Fface_notice,
+      </if>
+      <if test="caComfirmTag != null" >
+        Fca_comfirm_tag,
+      </if>
+      <if test="departmentId != null" >
+        Fdepartment_id,
+      </if>
+      <if test="isHide != null" >
+        Fis_hide,
+      </if>
+      <if test="externalName != null" >
+        Fexternal_name,
+      </if>
+      <if test="identityNo != null" >
+        Fidentity_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=CHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=CHAR},
+      </if>
+      <if test="openKey != null" >
+        #{openKey,jdbcType=CHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        #{wxOpenId,jdbcType=CHAR},
+      </if>
+      <if test="qqOpenId != null" >
+        #{qqOpenId,jdbcType=CHAR},
+      </if>
+      <if test="bindWx != null" >
+        #{bindWx,jdbcType=CHAR},
+      </if>
+      <if test="bindQq != null" >
+        #{bindQq,jdbcType=CHAR},
+      </if>
+      <if test="wxOpenKey != null" >
+        #{wxOpenKey,jdbcType=CHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="faceUrl != null" >
+        #{faceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaId != null" >
+        #{mediaId,jdbcType=CHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailComfirmTag != null" >
+        #{emailComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="qqnumber != null" >
+        #{qqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qqComfirmTag != null" >
+        #{qqComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneComfirmTag != null" >
+        #{telephoneComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="cardUrl != null" >
+        #{cardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iscomfirmed != null" >
+        #{iscomfirmed,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modTime != null" >
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkinTime != null" >
+        #{checkinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suffixuin != null" >
+        #{suffixuin,jdbcType=CHAR},
+      </if>
+      <if test="standby1 != null" >
+        #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        #{standby3,jdbcType=VARCHAR},
+      </if>
+      <if test="standby4 != null" >
+        #{standby4,jdbcType=VARCHAR},
+      </if>
+      <if test="standby5 != null" >
+        #{standby5,jdbcType=VARCHAR},
+      </if>
+      <if test="auditState != null" >
+        #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitState != null" >
+        #{submitState,jdbcType=INTEGER},
+      </if>
+      <if test="manageState != null" >
+        #{manageState,jdbcType=SMALLINT},
+      </if>
+      <if test="firstComfirmTime != null" >
+        #{firstComfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastComfirmTime != null" >
+        #{lastComfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyBranch != null" >
+        #{companyBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmedCount != null" >
+        #{confirmedCount,jdbcType=INTEGER},
+      </if>
+      <if test="origin != null" >
+        #{origin,jdbcType=CHAR},
+      </if>
+      <if test="isRed != null" >
+        #{isRed,jdbcType=INTEGER},
+      </if>
+      <if test="isMobileReg != null" >
+        #{isMobileReg,jdbcType=SMALLINT},
+      </if>
+      <if test="faceNotice != null" >
+        #{faceNotice,jdbcType=SMALLINT},
+      </if>
+      <if test="caComfirmTag != null" >
+        #{caComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=CHAR},
+      </if>
+      <if test="isHide != null" >
+        #{isHide,jdbcType=SMALLINT},
+      </if>
+      <if test="externalName != null" >
+        #{externalName,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null" >
+        #{identityNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fly.pojo.UserInfoExample" resultType="java.lang.Integer" >
+    select count(*) from t_user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_user_info
+    <set >
+      <if test="record.userId != null" >
+        Fuser_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.account != null" >
+        Faccount = #{record.account,jdbcType=CHAR},
+      </if>
+      <if test="record.openId != null" >
+        Fopen_id = #{record.openId,jdbcType=CHAR},
+      </if>
+      <if test="record.openKey != null" >
+        Fopen_key = #{record.openKey,jdbcType=CHAR},
+      </if>
+      <if test="record.wxOpenId != null" >
+        Fwx_open_id = #{record.wxOpenId,jdbcType=CHAR},
+      </if>
+      <if test="record.qqOpenId != null" >
+        Fqq_open_id = #{record.qqOpenId,jdbcType=CHAR},
+      </if>
+      <if test="record.bindWx != null" >
+        Fbind_wx = #{record.bindWx,jdbcType=CHAR},
+      </if>
+      <if test="record.bindQq != null" >
+        Fbind_qq = #{record.bindQq,jdbcType=CHAR},
+      </if>
+      <if test="record.wxOpenKey != null" >
+        Fwx_open_key = #{record.wxOpenKey,jdbcType=CHAR},
+      </if>
+      <if test="record.gender != null" >
+        Fgender = #{record.gender,jdbcType=CHAR},
+      </if>
+      <if test="record.sign != null" >
+        Fsign = #{record.sign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickName != null" >
+        Fnick_name = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faceUrl != null" >
+        Fface_url = #{record.faceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mediaId != null" >
+        Fmedia_id = #{record.mediaId,jdbcType=CHAR},
+      </if>
+      <if test="record.realName != null" >
+        Freal_name = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        Femail = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailComfirmTag != null" >
+        Femail_comfirm_tag = #{record.emailComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.qqnumber != null" >
+        Fqqnumber = #{record.qqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qqComfirmTag != null" >
+        Fqq_comfirm_tag = #{record.qqComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.telephone != null" >
+        Ftelephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephoneComfirmTag != null" >
+        Ftelephone_comfirm_tag = #{record.telephoneComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.phone != null" >
+        Fphone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.company != null" >
+        Fcompany = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null" >
+        Fdepartment = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null" >
+        Fposition = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardUrl != null" >
+        Fcard_url = #{record.cardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iscomfirmed != null" >
+        Fiscomfirmed = #{record.iscomfirmed,jdbcType=SMALLINT},
+      </if>
+      <if test="record.createTime != null" >
+        Fcreate_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modTime != null" >
+        Fmod_time = #{record.modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.checkinTime != null" >
+        Fcheckin_time = #{record.checkinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.suffixuin != null" >
+        FsuffixUin = #{record.suffixuin,jdbcType=CHAR},
+      </if>
+      <if test="record.standby1 != null" >
+        Fstandby1 = #{record.standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standby2 != null" >
+        Fstandby2 = #{record.standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standby3 != null" >
+        Fstandby3 = #{record.standby3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standby4 != null" >
+        Fstandby4 = #{record.standby4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standby5 != null" >
+        Fstandby5 = #{record.standby5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auditState != null" >
+        Faudit_state = #{record.auditState,jdbcType=INTEGER},
+      </if>
+      <if test="record.submitTime != null" >
+        Fsubmit_time = #{record.submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.submitState != null" >
+        Fsubmit_state = #{record.submitState,jdbcType=INTEGER},
+      </if>
+      <if test="record.manageState != null" >
+        Fmanage_state = #{record.manageState,jdbcType=SMALLINT},
+      </if>
+      <if test="record.firstComfirmTime != null" >
+        Ffirst_comfirm_time = #{record.firstComfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastComfirmTime != null" >
+        Flast_comfirm_time = #{record.lastComfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.companyBranch != null" >
+        Fcompany_branch = #{record.companyBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.confirmedCount != null" >
+        Fconfirmed_count = #{record.confirmedCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.origin != null" >
+        Forigin = #{record.origin,jdbcType=CHAR},
+      </if>
+      <if test="record.isRed != null" >
+        Fis_red = #{record.isRed,jdbcType=INTEGER},
+      </if>
+      <if test="record.isMobileReg != null" >
+        Fis_mobile_reg = #{record.isMobileReg,jdbcType=SMALLINT},
+      </if>
+      <if test="record.faceNotice != null" >
+        Fface_notice = #{record.faceNotice,jdbcType=SMALLINT},
+      </if>
+      <if test="record.caComfirmTag != null" >
+        Fca_comfirm_tag = #{record.caComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.departmentId != null" >
+        Fdepartment_id = #{record.departmentId,jdbcType=CHAR},
+      </if>
+      <if test="record.isHide != null" >
+        Fis_hide = #{record.isHide,jdbcType=SMALLINT},
+      </if>
+      <if test="record.externalName != null" >
+        Fexternal_name = #{record.externalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identityNo != null" >
+        Fidentity_no = #{record.identityNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_user_info
+    set Fuser_id = #{record.userId,jdbcType=CHAR},
+      Faccount = #{record.account,jdbcType=CHAR},
+      Fopen_id = #{record.openId,jdbcType=CHAR},
+      Fopen_key = #{record.openKey,jdbcType=CHAR},
+      Fwx_open_id = #{record.wxOpenId,jdbcType=CHAR},
+      Fqq_open_id = #{record.qqOpenId,jdbcType=CHAR},
+      Fbind_wx = #{record.bindWx,jdbcType=CHAR},
+      Fbind_qq = #{record.bindQq,jdbcType=CHAR},
+      Fwx_open_key = #{record.wxOpenKey,jdbcType=CHAR},
+      Fgender = #{record.gender,jdbcType=CHAR},
+      Fsign = #{record.sign,jdbcType=VARCHAR},
+      Fnick_name = #{record.nickName,jdbcType=VARCHAR},
+      Fface_url = #{record.faceUrl,jdbcType=VARCHAR},
+      Fmedia_id = #{record.mediaId,jdbcType=CHAR},
+      Freal_name = #{record.realName,jdbcType=VARCHAR},
+      Femail = #{record.email,jdbcType=VARCHAR},
+      Femail_comfirm_tag = #{record.emailComfirmTag,jdbcType=SMALLINT},
+      Fqqnumber = #{record.qqnumber,jdbcType=VARCHAR},
+      Fqq_comfirm_tag = #{record.qqComfirmTag,jdbcType=SMALLINT},
+      Ftelephone = #{record.telephone,jdbcType=VARCHAR},
+      Ftelephone_comfirm_tag = #{record.telephoneComfirmTag,jdbcType=SMALLINT},
+      Fphone = #{record.phone,jdbcType=VARCHAR},
+      Fcompany = #{record.company,jdbcType=VARCHAR},
+      Fdepartment = #{record.department,jdbcType=VARCHAR},
+      Fposition = #{record.position,jdbcType=VARCHAR},
+      Fcard_url = #{record.cardUrl,jdbcType=VARCHAR},
+      Fiscomfirmed = #{record.iscomfirmed,jdbcType=SMALLINT},
+      Fcreate_time = #{record.createTime,jdbcType=TIMESTAMP},
+      Fmod_time = #{record.modTime,jdbcType=TIMESTAMP},
+      Fcheckin_time = #{record.checkinTime,jdbcType=TIMESTAMP},
+      FsuffixUin = #{record.suffixuin,jdbcType=CHAR},
+      Fstandby1 = #{record.standby1,jdbcType=VARCHAR},
+      Fstandby2 = #{record.standby2,jdbcType=VARCHAR},
+      Fstandby3 = #{record.standby3,jdbcType=VARCHAR},
+      Fstandby4 = #{record.standby4,jdbcType=VARCHAR},
+      Fstandby5 = #{record.standby5,jdbcType=VARCHAR},
+      Faudit_state = #{record.auditState,jdbcType=INTEGER},
+      Fsubmit_time = #{record.submitTime,jdbcType=TIMESTAMP},
+      Fsubmit_state = #{record.submitState,jdbcType=INTEGER},
+      Fmanage_state = #{record.manageState,jdbcType=SMALLINT},
+      Ffirst_comfirm_time = #{record.firstComfirmTime,jdbcType=TIMESTAMP},
+      Flast_comfirm_time = #{record.lastComfirmTime,jdbcType=TIMESTAMP},
+      Fcompany_branch = #{record.companyBranch,jdbcType=VARCHAR},
+      Fconfirmed_count = #{record.confirmedCount,jdbcType=INTEGER},
+      Forigin = #{record.origin,jdbcType=CHAR},
+      Fis_red = #{record.isRed,jdbcType=INTEGER},
+      Fis_mobile_reg = #{record.isMobileReg,jdbcType=SMALLINT},
+      Fface_notice = #{record.faceNotice,jdbcType=SMALLINT},
+      Fca_comfirm_tag = #{record.caComfirmTag,jdbcType=SMALLINT},
+      Fdepartment_id = #{record.departmentId,jdbcType=CHAR},
+      Fis_hide = #{record.isHide,jdbcType=SMALLINT},
+      Fexternal_name = #{record.externalName,jdbcType=VARCHAR},
+      Fidentity_no = #{record.identityNo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fly.pojo.UserInfo" >
+    update t_user_info
+    <set >
+      <if test="account != null" >
+        Faccount = #{account,jdbcType=CHAR},
+      </if>
+      <if test="openId != null" >
+        Fopen_id = #{openId,jdbcType=CHAR},
+      </if>
+      <if test="openKey != null" >
+        Fopen_key = #{openKey,jdbcType=CHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        Fwx_open_id = #{wxOpenId,jdbcType=CHAR},
+      </if>
+      <if test="qqOpenId != null" >
+        Fqq_open_id = #{qqOpenId,jdbcType=CHAR},
+      </if>
+      <if test="bindWx != null" >
+        Fbind_wx = #{bindWx,jdbcType=CHAR},
+      </if>
+      <if test="bindQq != null" >
+        Fbind_qq = #{bindQq,jdbcType=CHAR},
+      </if>
+      <if test="wxOpenKey != null" >
+        Fwx_open_key = #{wxOpenKey,jdbcType=CHAR},
+      </if>
+      <if test="gender != null" >
+        Fgender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="sign != null" >
+        Fsign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        Fnick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="faceUrl != null" >
+        Fface_url = #{faceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaId != null" >
+        Fmedia_id = #{mediaId,jdbcType=CHAR},
+      </if>
+      <if test="realName != null" >
+        Freal_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Femail = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailComfirmTag != null" >
+        Femail_comfirm_tag = #{emailComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="qqnumber != null" >
+        Fqqnumber = #{qqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qqComfirmTag != null" >
+        Fqq_comfirm_tag = #{qqComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="telephone != null" >
+        Ftelephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneComfirmTag != null" >
+        Ftelephone_comfirm_tag = #{telephoneComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="phone != null" >
+        Fphone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        Fcompany = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        Fdepartment = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        Fposition = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="cardUrl != null" >
+        Fcard_url = #{cardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iscomfirmed != null" >
+        Fiscomfirmed = #{iscomfirmed,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        Fcreate_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modTime != null" >
+        Fmod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkinTime != null" >
+        Fcheckin_time = #{checkinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suffixuin != null" >
+        FsuffixUin = #{suffixuin,jdbcType=CHAR},
+      </if>
+      <if test="standby1 != null" >
+        Fstandby1 = #{standby1,jdbcType=VARCHAR},
+      </if>
+      <if test="standby2 != null" >
+        Fstandby2 = #{standby2,jdbcType=VARCHAR},
+      </if>
+      <if test="standby3 != null" >
+        Fstandby3 = #{standby3,jdbcType=VARCHAR},
+      </if>
+      <if test="standby4 != null" >
+        Fstandby4 = #{standby4,jdbcType=VARCHAR},
+      </if>
+      <if test="standby5 != null" >
+        Fstandby5 = #{standby5,jdbcType=VARCHAR},
+      </if>
+      <if test="auditState != null" >
+        Faudit_state = #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        Fsubmit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitState != null" >
+        Fsubmit_state = #{submitState,jdbcType=INTEGER},
+      </if>
+      <if test="manageState != null" >
+        Fmanage_state = #{manageState,jdbcType=SMALLINT},
+      </if>
+      <if test="firstComfirmTime != null" >
+        Ffirst_comfirm_time = #{firstComfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastComfirmTime != null" >
+        Flast_comfirm_time = #{lastComfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyBranch != null" >
+        Fcompany_branch = #{companyBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmedCount != null" >
+        Fconfirmed_count = #{confirmedCount,jdbcType=INTEGER},
+      </if>
+      <if test="origin != null" >
+        Forigin = #{origin,jdbcType=CHAR},
+      </if>
+      <if test="isRed != null" >
+        Fis_red = #{isRed,jdbcType=INTEGER},
+      </if>
+      <if test="isMobileReg != null" >
+        Fis_mobile_reg = #{isMobileReg,jdbcType=SMALLINT},
+      </if>
+      <if test="faceNotice != null" >
+        Fface_notice = #{faceNotice,jdbcType=SMALLINT},
+      </if>
+      <if test="caComfirmTag != null" >
+        Fca_comfirm_tag = #{caComfirmTag,jdbcType=SMALLINT},
+      </if>
+      <if test="departmentId != null" >
+        Fdepartment_id = #{departmentId,jdbcType=CHAR},
+      </if>
+      <if test="isHide != null" >
+        Fis_hide = #{isHide,jdbcType=SMALLINT},
+      </if>
+      <if test="externalName != null" >
+        Fexternal_name = #{externalName,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null" >
+        Fidentity_no = #{identityNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Fuser_id = #{userId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fly.pojo.UserInfo" >
+    update t_user_info
+    set Faccount = #{account,jdbcType=CHAR},
+      Fopen_id = #{openId,jdbcType=CHAR},
+      Fopen_key = #{openKey,jdbcType=CHAR},
+      Fwx_open_id = #{wxOpenId,jdbcType=CHAR},
+      Fqq_open_id = #{qqOpenId,jdbcType=CHAR},
+      Fbind_wx = #{bindWx,jdbcType=CHAR},
+      Fbind_qq = #{bindQq,jdbcType=CHAR},
+      Fwx_open_key = #{wxOpenKey,jdbcType=CHAR},
+      Fgender = #{gender,jdbcType=CHAR},
+      Fsign = #{sign,jdbcType=VARCHAR},
+      Fnick_name = #{nickName,jdbcType=VARCHAR},
+      Fface_url = #{faceUrl,jdbcType=VARCHAR},
+      Fmedia_id = #{mediaId,jdbcType=CHAR},
+      Freal_name = #{realName,jdbcType=VARCHAR},
+      Femail = #{email,jdbcType=VARCHAR},
+      Femail_comfirm_tag = #{emailComfirmTag,jdbcType=SMALLINT},
+      Fqqnumber = #{qqnumber,jdbcType=VARCHAR},
+      Fqq_comfirm_tag = #{qqComfirmTag,jdbcType=SMALLINT},
+      Ftelephone = #{telephone,jdbcType=VARCHAR},
+      Ftelephone_comfirm_tag = #{telephoneComfirmTag,jdbcType=SMALLINT},
+      Fphone = #{phone,jdbcType=VARCHAR},
+      Fcompany = #{company,jdbcType=VARCHAR},
+      Fdepartment = #{department,jdbcType=VARCHAR},
+      Fposition = #{position,jdbcType=VARCHAR},
+      Fcard_url = #{cardUrl,jdbcType=VARCHAR},
+      Fiscomfirmed = #{iscomfirmed,jdbcType=SMALLINT},
+      Fcreate_time = #{createTime,jdbcType=TIMESTAMP},
+      Fmod_time = #{modTime,jdbcType=TIMESTAMP},
+      Fcheckin_time = #{checkinTime,jdbcType=TIMESTAMP},
+      FsuffixUin = #{suffixuin,jdbcType=CHAR},
+      Fstandby1 = #{standby1,jdbcType=VARCHAR},
+      Fstandby2 = #{standby2,jdbcType=VARCHAR},
+      Fstandby3 = #{standby3,jdbcType=VARCHAR},
+      Fstandby4 = #{standby4,jdbcType=VARCHAR},
+      Fstandby5 = #{standby5,jdbcType=VARCHAR},
+      Faudit_state = #{auditState,jdbcType=INTEGER},
+      Fsubmit_time = #{submitTime,jdbcType=TIMESTAMP},
+      Fsubmit_state = #{submitState,jdbcType=INTEGER},
+      Fmanage_state = #{manageState,jdbcType=SMALLINT},
+      Ffirst_comfirm_time = #{firstComfirmTime,jdbcType=TIMESTAMP},
+      Flast_comfirm_time = #{lastComfirmTime,jdbcType=TIMESTAMP},
+      Fcompany_branch = #{companyBranch,jdbcType=VARCHAR},
+      Fconfirmed_count = #{confirmedCount,jdbcType=INTEGER},
+      Forigin = #{origin,jdbcType=CHAR},
+      Fis_red = #{isRed,jdbcType=INTEGER},
+      Fis_mobile_reg = #{isMobileReg,jdbcType=SMALLINT},
+      Fface_notice = #{faceNotice,jdbcType=SMALLINT},
+      Fca_comfirm_tag = #{caComfirmTag,jdbcType=SMALLINT},
+      Fdepartment_id = #{departmentId,jdbcType=CHAR},
+      Fis_hide = #{isHide,jdbcType=SMALLINT},
+      Fexternal_name = #{externalName,jdbcType=VARCHAR},
+      Fidentity_no = #{identityNo,jdbcType=VARCHAR}
+    where Fuser_id = #{userId,jdbcType=CHAR}
+  </update>
+</mapper>
